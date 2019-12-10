@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-sm-3 left-side px-0">
+    <div class="list-group">
+      <%= link_to 'Sửa thông tin', '#', class: 'list-group-item list-group-item-action' %>
+      <%# <%= link_to "Đổi mật khẩu", '#', class: "list-group-item list-group-item-action" %>
+    </div>
+  </div>
+  <div class="col-sm-9 right-side py-4">
+
+    <!-- <h2 class="text-center">Edit Your Profile</h2> -->
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "shared/errors", obj: resource %>
+
+
+    <div class="form-group">
+      <%= f.label :username %>
+            <i><font color="red">*</font></i>
+      <%= f.text_field :username, class: "form-control rounded-pill", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name %>
+            <i><font color="red">*</font></i>
+      <%= f.text_field :name, class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :is_male %>
+      <%= f.select :is_male, ['Male', 'Female'], class: "form-control rounded-pill"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :birthday %>
+      <%= f.date_field :birthday, class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+            <i><font color="red">*</font></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :current_password %>
+      <i><font color="red">*</font></i>
+      <%= f.password_field :current_password, class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <i>(để trống nếu bạn không muốn thay đổi)</i><br />
+      <%= f.password_field :password, class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+            <i>(để trống nếu bạn không muốn thay đổi)</i><br />
+      <%= f.password_field :password_confirmation, class: "form-control rounded-pill" %>
+    </div>
+
+    <div class="form-group actions">
+      <%= f.submit "Cập nhật", class: "btn color-custom rounded-pill form-control" %>
+    </div>
+    <% end %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Đang chờ xác nhận for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+  
+  </div>
+
+  <%= link_to "Back", :back, class: "btn color-custom rounded-pill" %>
+</div>
